@@ -1,0 +1,109 @@
+Biblioteca Personal con MongoDB y PyMongo
+
+Aplicación de consola en Python para administrar una biblioteca personal utilizando una base de datos NoSQL MongoDB. Cada libro se almacena como un documento dentro de una colección.
+
+Objetivo
+
+Modificar la aplicación original basada en bases de datos relacionales para usar MongoDB. El sistema ahora trabaja con documentos JSON en lugar de tablas, manteniendo las mismas funciones básicas.
+
+Funcionalidades
+
+La aplicación permite:
+
+Agregar libros
+
+Actualizar información de un libro
+
+Eliminar libros
+
+Listar todos los libros
+
+Buscar libros por título, autor o género
+
+Salir del programa
+
+Tecnologías utilizadas
+
+Python 3
+
+MongoDB (local o Atlas)
+
+PyMongo
+
+Instalación de dependencias
+
+Ejecutar:
+
+pip install -r requirements.txt
+
+
+El archivo requirements.txt debe incluir:
+
+pymongo==4.6.1
+
+Instalación y configuración de MongoDB
+Opción 1: MongoDB local
+
+Descargar desde: https://www.mongodb.com/try/download/community
+
+Instalar MongoDB Community Server.
+
+Asegurarse de que el servicio mongod esté en ejecución.
+
+Conexión recomendada:
+
+mongodb://localhost:27017
+
+Opción 2: MongoDB Atlas (en la nube)
+
+Crear cuenta en: https://www.mongodb.com/atlas
+
+Crear un cluster gratuito.
+
+Obtener la cadena de conexión, por ejemplo:
+
+mongodb+srv://usuario:password@cluster.mongodb.net/
+
+Configuración de la conexión
+
+En el archivo principal de la aplicación incluir algo similar:
+
+from pymongo import MongoClient
+
+cliente = MongoClient("mongodb://localhost:27017")
+db = cliente["biblioteca_db"]
+coleccion = db["libros"]
+
+Estructura del documento (libro)
+
+Cada libro se almacena como un documento JSON:
+
+{
+  "titulo": "Ejemplo",
+  "autor": "Autor Ejemplo",
+  "genero": "Fantasía",
+  "estado": "Leído"
+}
+
+Ejecución del programa
+
+Ejecutar:
+
+python app.py
+
+Ejemplos de entrada válida
+
+Título: El Hobbit
+Autor: J. R. R. Tolkien
+Género: Fantasía
+Estado: Leído
+
+Manejo de errores implementado
+
+Error de conexión a MongoDB
+
+Documentos incompletos o con campos inválidos
+
+Búsquedas sin resultados
+
+Prevención de campos vacíos
